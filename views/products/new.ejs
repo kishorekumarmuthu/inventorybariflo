@@ -1,0 +1,48 @@
+<%- include('../partials/header') %>
+    <title>New Product</title>
+</head>
+
+<body class="container newbody text-center">
+    <h1 class="text-info text-center">Add A Product</h1>
+    <form class="container" action="/products" method="POST">
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" name="name" id="name" placeholder="product name">
+            <label for="name" id="name">Product Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="number" id="price" name="price" placeholder="price">
+            <label for="price" id="price">Price (Unit)</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="number" name="quantity" id="quantity" placeholder="quantity available">
+            <label for="quantity" id="quantity">Quantity</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" name="nosperquantity" id="nosperquantity" placeholder="Nos/Sets/Meters Per Quantity">
+            <label for="nosperquantity" id="nosperquantity">Nos/Sets/Meters Per Quantity</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" name="vendor" id="vendor" placeholder="supplier name">
+            <label for="name" id="vendor">Supplier</label>
+        </div>
+        <div class="form-floating mb-3">
+            <select class="form-select form-control" name="category" id="category">
+                <% for(let category of categories){ %>
+                <option value="<%=category%>"><%=category%></option>
+                <% } %>
+            </select>
+            <label for="category" id="category">Select Category</label>
+        </div>
+        <button class="text-center btn btn-info">Submit</button>
+    </form>
+    <div class="d-grid gap-2 d-md-block">
+        <p>
+            <form action="/logout" method="POST">
+                <button class="btn btn-danger">Sign Out</button>
+            </form>
+        </p>
+        <p>
+            <a class="back" href="/products">Back To All Products</a>
+        <p>
+    </div>
+<%- include('../partials/footer') %>

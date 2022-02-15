@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+    <title><%= product.name %></title>
+</head>
+
+<body class="newbody container text-center">
+    <h1><%= product.name %></h1>
+    <p>Price: ₹<%= product.price%></p>
+    <p>Quanity Available: <%= product.quantity%></p>
+    <p>Nos/Sets/Meters Per Quantity Available: <%= product.nosperquantity%></p>
+    <p>Supplier: <%= product.vendor%></p>
+    <p>Category: <a href="/products?category=<%= product.category%>"><%= product.category%></a></p>
+    <p><a href="/products">All Products</a></p>
+    <p><a href="/products/<%=product._id%>/edit">Edit Product</a></p>
+    <p>
+        <form action="/products/<%=product._id%>?_method=DELETE" method="POST">
+            <button class="btn btn-danger">Delete</button>
+        </form>
+    </p>
+    <p>
+        <div class="d-grid gap-2 d-md-block">
+            <p>
+                <a href="/products/"><button class="btn btn-info" >Cancel</button></a>
+            </p>
+            <p>
+                <form action="/logout" method="POST">
+                    <button class="btn btn-danger">Sign Out</button>
+                </form>
+            </p>
+        </div>
+    </p>
+<%- include('../partials/footer') %>

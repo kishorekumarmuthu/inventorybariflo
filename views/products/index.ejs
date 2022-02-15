@@ -1,0 +1,58 @@
+<%- include('../partials/header') %>
+    <title>All Products</title>
+</head>
+
+<body class="newbody container text-center">
+    <h1><%= category%> Products!</h1>
+    <table class="table container">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quanity</th>
+            <th scope="col">Nos/Sets/Meters Per Quantity</th>
+            <th scope="col">Supplier</th>
+            <th scope="col">Category</th>
+            <th scope="col">Action</th>
+        </tr>
+        <tbody>
+            <% for(let product of products) { %>
+                <tr scope="row">
+                    <td>
+                        <a href="/products/<%=product._id%>"><%= product.name %></a> 
+                    </td>
+                    <td>
+                        <%= product.price %>
+                    </td>
+                    <td>
+                        <%= product.quantity %> 
+                    </td>
+                    <td>
+                        <%= product.nosperquantity %> 
+                    </td>
+                    <td>
+                        <%= product.vendor %> 
+                    </td>
+                    <td>
+                        <a href="/products?category=<%= product.category%>"><%= product.category%></a> 
+                    </td>
+                    <td>
+                        <a href="/products/<%=product._id%>/edit">Update</a>/<a href="/products/<%=product._id%>">Delete</a>
+                    </td>
+                </tr>
+            <% }%>
+        </tbody>
+    </table>
+    <%if(category !== 'All') {%>
+    <p><a href="/products">All Products</a></p>
+    <% } %>
+    <div class="d-grid gap-2 d-md-block">
+        <p>
+            <a href="/products/new"><button class="btn btn-success">Add New Product</button></a>
+        </p>
+        <p>
+            <form class="d-grid gap-2 d-md-block" action="/logout" method="POST">
+                <button class="btn btn-danger">Sign Out</button>
+            </form>
+        </p>
+    </div>    
+<%- include('../partials/footer') %>

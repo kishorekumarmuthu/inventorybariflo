@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+    <title>Edit Product</title>
+</head>
+
+<body>
+    <body class="newbody container text-center">
+        <h1 class="text-info text-center">Edit Product</h1>
+        <form class="container" action="/products/<%=product._id%>?_method=PUT" method="POST">
+            <div class="form-floating mb-3">
+                <input class="form-control" type="text" name="name" id="name" placeholder="product name" value="<%=product.name%>">
+                <label for="name" id="name">Product Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" type="number" id="price" name="price" placeholder="price" value="<%=product.price%>">
+                <label for="price" id="price">Price (Unit)</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" type="number" name="quantity" id="quantity" placeholder="quantity available" value="<%=product.quantity%>">
+                <label for="quantity" id="quantity">Quantity</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" type="text" name="nosperquantity" id="quantity" placeholder="Nos/Sets/Meters Per Quantity" value="<%=product.nosperquantity%>">
+                <label for="nosperquantity" id="nosperquantity">Nos/Sets/Meters Per Quantity</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" type="text" name="vendor" id="vendor" placeholder="supplier name" value="<%=product.vendor%>">
+                <label for="name" id="vendor">Supplier</label>
+            </div>
+            <div class="form-floating mb-3">
+                <select class="form-select form-control" name="category" id="category">
+                    <% for(let category of categories){ %>
+                    <option value="<%=category%>" <%= product.category === category ? 'selected': '' %>><%=category%></option>
+                    <% } %>
+                </select>
+                <label for="category" id="category">Select Category</label>
+            </div>
+            <p>
+                <button class="text-center btn btn-info" >Submit</button>
+            </p>
+    </form>
+    <div class="d-grid gap-2 d-md-block">
+        <p>
+            <a href="/products/"><button class="text-center btn btn-info" >Cancel</button></a>
+        </p>
+        <p>
+            <form class ="signout" action="/logout" method="POST">
+                <button class="btn btn-danger">Sign Out</button>
+            </form>
+        </p>
+    </div>
+<%- include('../partials/footer') %>

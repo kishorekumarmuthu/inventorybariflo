@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+    <title>Register</title>
+</head>
+
+<body>
+    <div id="outer" class="container text-center">
+        <div id="inner">
+            <h1 class="text-info">SIGN UP!</h1>
+            <form action="/register" method="POST">
+                <div class="mb-3">
+                    <label for="username">Enter Username:</label>
+                    <input type="text" name="username" id="username" placeholder="username">
+                </div>
+                <div class="mb-3">
+                    <label for="password">Enter password:</label>
+                    <input type="password" name="password" id="password" placeholder="password">
+                </div>
+                <button class="btn btn-info">Sign Up</button>
+            </form>
+        </div>
+    </div>
+<%- include('../partials/footer') %>
